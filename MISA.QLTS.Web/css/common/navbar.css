@@ -160,6 +160,7 @@
   background-image: url("/content/icon/report.JPG");
 }
 
+/* set icon show large menu */
 .icon-option {
   width: 16px;
   height: 16px;
@@ -168,13 +169,48 @@
   background-repeat: no-repeat;
   position: absolute;
   right: 24px;
+  transition: 0.5s;
 }
 
-.icon-option + .arrow {
-  transform: rotate(-90deg);
-  transition: 0.1s;
+/*
+  set position for right drop-down menu
+*/
+.nav-menu .header-menu {
+  position: absolute;
+  width: 220px;
+  height: calc(100% - 167px);
+  top: 167px;
+  left: 75px;
+  color: rgb(82, 82, 82);
+  background-color: #ffffff;
+  z-index: 10;
+  display: none;
 }
-.icon-option:checked + .arrow {
-  transform: rotate(0deg);
-  transition: 0.1s;
+
+.nav-menu .header-menu .sub-box {
+  display: flex;
+  align-items: center;
+}
+
+.nav-menu .header-menu .sub-box:hover {
+  background-color: #cdd7f5;
+  cursor: pointer;
+}
+
+.nav-menu .header-menu .icon-sub {
+  width: 16px;
+  height: 16px;
+  background-image: url("/content/icon/down-arrow.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  margin-left: 24px;
+  transform: rotate(-90deg);
+}
+
+.nav-menu .header-menu .sub-title {
+  padding: 16px 5px 16px 16px;
+}
+.nav-menu .header-menu .sub-option {
+  padding: 16px 5px 16px 60px;
 }

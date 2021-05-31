@@ -51,7 +51,7 @@ class Property {
             theadRender = $("<thead></thead>"),
             rowRender = $("<tr class='custom-color'></tr>");
         // append column stt and checkbox
-        let stt = `<th><input type="checkbox" id="checkall" name="checkall" value="checkall"></th><th>STT</th>`;
+        let stt = `<th><input type="checkbox" id="checkall" name="checkall" value="checkall" onchange="setCheckedAll()"></th><th>STT</th>`;
         rowRender.append(stt);
         // foreach row for build header
         me.grid.find(".col").each(function () {
@@ -83,7 +83,7 @@ class Property {
         if(data && data.length > 0){
             data.filter(function(item){
                 let row = $("<tr></tr>");
-                let checkbox = `<th><input type="checkbox" id="checkall" name="checkall" value="${item[0]}"><th>${++count}</th>`;
+                let checkbox = `<th><input type="checkbox" id="" name="" class="checkedValue" value="${item[0]}"><th>${++count}</th>`;
                 row.append(checkbox);
                 // Duyệt config từng cột
                 me.grid.find(".col").each(function(){
