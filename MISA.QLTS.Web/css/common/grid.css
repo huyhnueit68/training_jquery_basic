@@ -1,0 +1,11 @@
+.grid-bar {
+  height: 56px;
+}
+
+.grid-property .hide-item {
+  display: none;
+}
+
+.custom-color {
+  background-color: rgba(236, 236, 236, 0.651);
+}

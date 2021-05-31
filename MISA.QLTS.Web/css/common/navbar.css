@@ -1,0 +1,180 @@
+.m-navbar {
+  float: left;
+  width: 220px;
+  height: 100vh;
+  background-color: rgba(28, 48, 72);
+  border-right: 1px solid #e5e5e5;
+  transition: width 1s ease-in-out;
+}
+
+/* css for main menu */
+.m-navbar .nav-main {
+  display: flex;
+  width: 100%;
+}
+
+/* css button show sub main menu */
+.m-navbar .sub-main-menu {
+  display: flex;
+  align-items: center;
+  height: 56px;
+  padding: 0 16px 0 16px;
+  border-top: 1px solid #b9b9b9;
+}
+.m-navbar .sub-main-menu .sub-menu-icon {
+  background-image: url("/content/icon/toggleMenu.JPG");
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-left: 5px;
+  margin-top: 5px;
+  width: 32px;
+  height: 32px;
+}
+.m-navbar .sub-main-menu .sub-menu-text {
+  color: #ffffff;
+  padding-left: 16px;
+  font-size: 16px;
+}
+.m-navbar .sub-main-menu .sub-menu-icon:hover {
+  cursor: pointer;
+}
+/* css main menu box */
+.m-navbar .nav-main .nav-main-style {
+  display: flex;
+  width: 100%;
+  padding: 16px;
+  position: relative;
+  align-items: center;
+}
+
+/* css main menu box with main icon */
+.m-navbar .nav-main .nav-main-style .main-icon {
+  width: 35px;
+  height: 35px;
+  background-image: url("/content/icon/mainIcon.JPG");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* css main menu box with main text */
+.m-navbar .nav-main .nav-main-style .main-title {
+  font-size: 25px;
+  font-family: fantasy;
+  color: white;
+  padding-left: 12px;
+}
+
+/* css main menu box with main show more */
+.m-navbar .nav-main .nav-main-style .main-more-icon {
+  width: 25px;
+  height: 25px;
+  background-image: url("/content/icon/hamburgerMenu.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  right: 16px;
+}
+
+/* css main menu box with main show more action hover*/
+.m-navbar .nav-main .nav-main-style .main-more-icon:hover {
+  cursor: pointer;
+}
+
+/*
+  css for nav bar list menu
+*/
+
+/* main nav bar */
+.m-navbar .nav-menu {
+  width: 100%;
+  height: calc(100% - 123px);
+}
+
+/*
+  css common for each option
+*/
+.m-navbar .nav-menu .nav-item {
+  display: flex;
+  padding-left: 16px;
+  height: 50px;
+  cursor: pointer;
+  line-height: 50px;
+  color: #ffffff;
+  align-items: center;
+  position: relative;
+}
+
+/* css icon each option */
+.m-navbar .nav-menu .nav-item .nav-item-icon {
+  width: 25px;
+  height: 25px;
+  padding-right: 41px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* action for option menu*/
+.m-navbar .nav-menu .nav-item:hover {
+  background-color: rgb(48, 70, 97);
+  color: #8084b1;
+}
+.nav-sub-item .sub-menu .sub-option:hover {
+  background-color: rgb(72, 88, 108);
+  cursor: pointer;
+}
+
+/*
+  custom sub menu
+*/
+.nav-sub-item .sub-menu {
+  background-color: rgb(51, 69, 91);
+  color: #ffffff;
+  display: none;
+}
+
+/* css for nav bar sub menu */
+.nav-sub-item .sub-menu .sub-option {
+  padding: 16px 5px 16px 55px;
+}
+
+/* set icon for each option*/
+.item-icon-1 {
+  background-image: url("/content/icon/screenPC.JPG");
+}
+.item-icon-2 {
+  background-image: url("/content/icon/priotyIcon.JPG");
+}
+.item-icon-3 {
+  background-image: url("/content/icon/streetIcon.JPG");
+}
+.item-icon-4 {
+  background-image: url("/content/icon/pain.JPG");
+}
+.item-icon-5 {
+  background-image: url("/content/icon/category.JPG");
+}
+.item-icon-6 {
+  background-image: url("/content/icon/search.JPG");
+}
+.item-icon-7 {
+  background-image: url("/content/icon/report.JPG");
+}
+
+.icon-option {
+  width: 16px;
+  height: 16px;
+  background-image: url("/content/icon/showMore.JPG");
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  right: 24px;
+}
+
+.icon-option + .arrow {
+  transform: rotate(-90deg);
+  transition: 0.1s;
+}
+.icon-option:checked + .arrow {
+  transform: rotate(0deg);
+  transition: 0.1s;
+}

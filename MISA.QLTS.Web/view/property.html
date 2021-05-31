@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MISA QLTS</title>
+
+    <!-- add library bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- add library css common -->
+    <link rel="stylesheet" href="/css/common/main.css">
+    <!-- add css for nav bar -->
+    <link rel="stylesheet" href="/css/common/navbar.css">
+    <!-- add css for header -->
+    <link rel="stylesheet" href="/css/common/header.css">
+    <!-- add css for content -->
+    <link rel="stylesheet" href="/css/common/content.css">
+    <!-- add css for grid -->
+    <link rel="stylesheet" href="/css/common/grid.css">
+    <!-- add css for custom page -->
+    <link rel="stylesheet" href="/css/page/property.css">
+</head>
+
+<body>
+    <!-- nav bar -->
+    <div class="m-navbar" >
+        <!-- header nav bar -->
+        <div class="nav-main">
+            <div class="nav-main-style">
+                <div class="main-icon"></div>
+                <div class="main-title">MISA QLTS</div>
+                <div class="main-more-icon" id="main-menu"></div>
+            </div>
+        </div>
+        <!-- nav bar menu option -->
+        <div class="nav-menu" >
+            <div class="nav-item">
+                <div class="nav-item-icon item-icon-1"></div>
+                <div class="nav-item-text">Tổng quan</div>
+            </div>
+            <div class="nav-item">
+                <div class="nav-item-icon item-icon-2"></div>
+                <div class="nav-item-text">Tài sản</div>
+                <div class="nav-item-text icon-option"></div>
+            </div>
+            <div class="nav-sub-item" id="sub-TS">
+                <div class="nav-item">
+                    <div class="nav-item-icon item-icon-3"></div>
+                    <div class="nav-item-text">Tài sản HT-ĐB</div>
+                    <div class="nav-item-text icon-option"></div>
+                </div>
+                <div class="sub-menu">
+                    <div class="sub-option">Ghi tăng</div>
+                    <div class="sub-option">Thay đổi thông tin</div>
+                    <div class="sub-option">Đánh giá lại</div>
+                    <div class="sub-option">Tính hao mòn</div>
+                    <div class="sub-option">Kiểm kê</div>
+                    <div class="sub-option">Ghi giảm</div>
+                </div>
+            </div>
+            <div class="nav-item">
+                <div class="nav-item-icon item-icon-4"></div>
+                <div class="nav-item-text">Công cụ dụng cụ</div>
+                <div class="nav-item-text icon-option"></div>
+            </div>
+            <div class="nav-item">
+                <div class="nav-item-icon item-icon-5"></div>
+                <div class="nav-item-text">Danh mục</div>
+            </div>
+            <div class="nav-item">
+                <div class="nav-item-icon item-icon-6"></div>
+                <div class="nav-item-text">Tra cứu</div>
+            </div>
+            <div class="nav-item">
+                <div class="nav-item-icon item-icon-7"></div>
+                <div class="nav-item-text">Báo cáo</div>
+            </div>
+        </div>
+        <!-- sub button action menu -->
+        <div class="sub-main-menu">
+            <div class="sub-menu-icon"></div>
+            <div class="sub-menu-text">Menu lớn</div>
+        </div>
+    </div>
+    <!-- header page -->
+    <div class="header">
+        <div class="h-department">
+            <!-- header page name -->
+            <div class="h-department-name">Sở tài chính</div>
+            <!-- header page select year -->
+            <div class="h-department-year">
+                <div class="year-text">
+                    <div class="customer-option">
+                        <select name="" class="customer-select">
+                            <option value="">2022</option>
+                            <option value="">2021</option>
+                            <option value="">2020</option>
+                            <option value="">2019</option>
+                        </select>
+                        <span class="customer-arrow"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- header page admin option -->
+        <div class="h-admin">
+            <div class="h-box-admin">
+                <div class="h-admin-bell"></div>
+                <div class="h-admin-menu"></div>
+                <div class="h-admin-question"></div>
+                <div class="h-admin-option">
+                    <div class="avatar"></div>
+                    <div class="arrow-option"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- content -->
+    <div class="content">
+        <div class="conten-header">
+            <!-- content name table-->
+            <div class="c-header-box">
+                <div class="header-name">Danh sách tài sản</div>
+                <div class="header-refesh"></div>
+            </div>
+            <!-- content option action-->
+            <div class="c-header-option">
+                <button class="btn-add">
+                    <div class="btn-name">Thêm</div>
+                    <div class="btn-arrow"></div>
+                </button>
+                <button class="btn-more">
+                    <div class="hbg-menu"></div>
+                    <div class="btn-show-option"></div>
+                </button>
+            </div>
+        </div>
+        <!-- content toolbar-->
+        <div class="content-info">
+            <div class="content-box">
+                <div class="info-toolbar">
+                    <div class="toolbar-search">
+                        <div class="search-box">
+                            <span class="form-control-search"></span>
+                            <input type="text" class="search-property" placeholder="Tìm kiếm tài sản">
+                        </div>
+                    </div>
+                    <div class="toolbar-more ">
+                        <div class="m-icon-common more-excel"></div>
+                        <div class="more-printer">
+                            <div class="m-icon-common main-icon-printer"></div>
+                            <div class="printer-arrow"></div>
+                        </div>
+                        <div class="more-load-action"></div>
+                    </div>
+                </div>
+                <!-- content main-->
+                <div class="info-content">
+                    <!-- content grid show info-->
+                    <div class="grid grid-property" id="gridProperty">
+                        <div class="hide-item">
+                            <div class="col" FieldName="idPriority">Mã tài sản</div>
+                            <div class="col" FieldName="name">Tên tài sản</div>
+                            <div class="col" FieldName="category" DataType="Date">Loại tài sản</div>
+                            <div class="col" FieldName="departmentUse">Bộ phận sử dụng</div>
+                            <div class="col" FieldName="qty"">Số lượng</div>
+                            <div class="col" FieldName="price" DataType="price">Nguyên giá</div>
+                            <div class="col" FieldName="cummulative">HM/KM lũy kế</div>
+                            <div class="col" FieldName="residualPrice">Gía trị còn lại</div>
+                        </div>
+                    </div>
+                    <!-- content grid show paging option-->
+                    <div class="grid-bar"></div>
+                </div>
+            </div>
+        </div> 
+    </div>
+
+    <!-- add jquery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- add js data for page property -->
+    <script src="/helper/dataForm.js"></script>
+    <!-- add js comomnt -->
+    <script src="/js/common/common.js"></script>
+    <!-- add js for page property -->
+    <script src="/js/page/property.js"></script>
+
+</body>
+
+</html>

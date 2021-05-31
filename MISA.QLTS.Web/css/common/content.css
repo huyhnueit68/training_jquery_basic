@@ -1,0 +1,250 @@
+/*
+  css main content
+*/
+.content {
+  position: absolute;
+  top: 61px;
+  left: 221px;
+  width: calc(100% - 221px);
+  height: calc(100% - 66px);
+  background-color: rgba(236, 236, 236, 0.651);
+  transition: width 1s ease-in-out;
+  transition: left 1s ease-in-out;
+}
+
+/* css header of content */
+.content .conten-header {
+  display: flex;
+  padding: 16px;
+  align-items: center;
+}
+
+/* css box name property */
+.content .conten-header .c-header-box {
+  align-items: center;
+  display: flex;
+}
+
+.content .conten-header .c-header-box .header-name {
+  font-size: 24px;
+}
+
+.content .conten-header .c-header-box .header-refesh {
+  padding-left: 45px;
+  background-image: url(/content/icon/refresh.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+}
+
+/* css action hover btn refesh */
+.content .conten-header .c-header-box .header-refesh:hover {
+  cursor: pointer;
+}
+
+/* header option common */
+.c-header-option {
+  display: flex;
+  position: absolute;
+  right: 16px;
+}
+
+/* header option box button add */
+.c-header-option .btn-add {
+  display: flex;
+  width: 100px;
+  height: 35px;
+  align-items: center;
+  background-color: rgb(27, 163, 201);
+  border: none;
+  border-radius: 5px;
+  position: relative;
+  margin-right: 16px;
+}
+
+/* header option add name */
+.c-header-option .btn-add .btn-name {
+  color: #ffffff;
+  padding-left: 16px;
+}
+
+/* header option button arrow */
+.c-header-option .btn-add .btn-arrow {
+  background-image: url(/content/icon/more.JPG);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  right: 12px;
+}
+
+/* header option button hamburger menu */
+.c-header-option .btn-more .hbg-menu {
+  background-image: url(/content/img/menu.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 29px;
+  height: 29px;
+}
+
+/* header option button show more*/
+.c-header-option .btn-more {
+  width: 72px;
+  height: 35px;
+  display: flex;
+  background-color: #ffffff;
+  border-radius: 5px;
+  border: none;
+  align-items: center;
+}
+
+/* hamburger show more option in hamburger menu */
+.c-header-option .btn-more .btn-show-option {
+  background-image: url(/content/icon/down-arrow.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  right: 12px;
+}
+
+/* box cover main content */
+.content .content-info {
+  padding: 0 16px 0 16px;
+  width: calc(100% - 32);
+  height: calc(100% - 62px);
+}
+
+/* box main content with shadow*/
+.content .content-info .content-box {
+  height: calc(100% - 16px);
+  background-color: #ffffff;
+  box-shadow: 2px 2px 15px rgb(70, 70, 70);
+}
+
+/*
+    custom input search
+*/
+.info-toolbar {
+  display: flex;
+  width: 100%;
+  height: 60px;
+}
+
+.info-toolbar .toolbar-search {
+  height: 100%;
+  width: 40%;
+  position: relative;
+  display: flex;
+}
+
+/* custom search toolbar*/
+.toolbar-search .search-box {
+  align-items: center;
+  display: block;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding-left: 16px;
+}
+/* config icon search*/
+.toolbar-search .search-box .form-control-search {
+  width: 20px;
+  height: 20px;
+  top: 20px;
+  left: 25px;
+  background-image: url("/content/img/loupe.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.toolbar-search .search-box .form-control-search,
+.toolbar-search .search-box .search-property {
+  display: block;
+}
+
+/* config search input*/
+.toolbar-search .search-box .search-property {
+  padding-left: 42px;
+  height: 33px;
+  width: 100%;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+}
+
+/* config icon search inside search input*/
+.toolbar-search .search-box .form-control-search {
+  position: absolute;
+  padding-left: 10px;
+  line-height: 2.375rem;
+  pointer-events: none;
+  color: #aaa;
+}
+
+/* css for more action in header content*/
+.info-toolbar .toolbar-more {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  width: 60%;
+  justify-content: flex-end;
+  padding-right: 16px;
+}
+
+/* set icon for each option */
+.info-toolbar .toolbar-more .m-icon-common {
+  width: 26px;
+  height: 26px;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.info-toolbar .toolbar-more .more-excel {
+  background-image: url("/content/img/excel.png");
+}
+.info-toolbar .toolbar-more .more-printer .main-icon-printer {
+  background-image: url("/content/img/printer.png");
+}
+.info-toolbar .toolbar-more .more-printer .printer-arrow {
+  width: 12px;
+  height: 12px;
+  margin-left: 5px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url("/content/icon/down-arrow.png");
+}
+.info-toolbar .toolbar-more .more-load-action {
+  width: 20px;
+  height: 20px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url("/content/img/more.png");
+}
+
+.info-toolbar .toolbar-more .more-printer {
+  align-items: center;
+  padding: 0 32px 0 32px;
+}
+
+/* custom search toolbar for icon search*/
+.info-toolbar .toolbar-more .more-printer {
+  display: flex;
+}
+
+.info-content {
+  width: 100%;
+}
+
+/* action hover button */
+.c-header-option .btn-add:hover,
+.info-toolbar .toolbar-more .more-excel:hover,
+.info-toolbar .toolbar-more .more-load-action:hover,
+.info-toolbar .toolbar-more .more-printer:hover,
+.c-header-option .btn-more:hover {
+  cursor: pointer;
+}

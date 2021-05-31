@@ -1,0 +1,4 @@
+.info-content .grid-property {
+  width: 100%;
+  height: calc(100vh - 260px);
+}
