@@ -32,7 +32,7 @@
   border: 1px solid rgb(185, 173, 173);
   border-radius: 5px;
 }
-
+/* custom select year */
 .header .h-department .h-department-year .year-text .customer-option {
   position: relative;
   align-items: center;
@@ -50,26 +50,20 @@
   pointer-events: none;
 }
 
+/* custom buton arrow in select year */
 .customer-option .customer-arrow::before {
   --size: 7px;
   content: "";
   position: absolute;
-  width: 0;
-  height: 0;
-
   left: 50%;
   top: 50%;
   transform: translate(-92%, -10%);
-}
-
-.customer-option .customer-arrow::before {
   border-left: var(--size) solid transparent;
   border-right: var(--size) solid transparent;
   border-top: var(--size) solid black;
 }
 
 /* css admin info */
-
 .header .h-admin {
   display: flex;
   align-self: center;
@@ -77,6 +71,7 @@
   right: 0;
 }
 
+/* admin account */
 .header .h-admin .h-box-admin {
   display: flex;
   justify-content: flex-end;
@@ -84,52 +79,58 @@
   align-items: center;
 }
 
+/* set icon notification admin*/
 .header .h-admin .h-box-admin .h-admin-bell {
   width: 25px;
   height: 25px;
-  background-image: url("../../content/img/bell.png");
+  background-image: url("/content/img/bell.png");
   background-repeat: no-repeat;
   background-size: contain;
   margin-right: 24px;
 }
 
+/* set icon option admin*/
 .header .h-admin .h-box-admin .h-admin-menu {
   width: 25px;
   height: 25px;
-  background-image: url("../../content/img/menu (1).png");
+  background-image: url("/content/img/menu (1).png");
   background-repeat: no-repeat;
   background-size: contain;
 }
 
+/* set icon question admin*/
 .header .h-admin .h-box-admin .h-admin-question {
   width: 25px;
   height: 25px;
-  background-image: url("../../content/img/information.png");
+  background-image: url("/content/img/information.png");
   background-repeat: no-repeat;
   background-size: contain;
   margin: 0 24px 0 24px;
 }
 
-.h-admin .h-box-admin .h-admin-option {
-  display: flex;
-  align-items: center;
-}
-
+/* set avatar */
 .h-admin .h-box-admin .h-admin-option .avatar {
   width: 25px;
   height: 25px;
-  background-image: url("../../content/img/avatar-default.png");
+  background-image: url("/content/img/avatar-default.png");
   background-repeat: no-repeat;
   background-size: contain;
 }
 
+/* arrow option next to avatar */
 .h-admin .h-box-admin .h-admin-option .arrow-option {
   width: 10px;
   height: 10px;
-  background-image: url("../../content/icon/down-arrow.png");
+  background-image: url("/content/icon/down-arrow.png");
   background-repeat: no-repeat;
   background-size: contain;
   margin-left: 5px;
+}
+
+/* group option admin user */
+.h-admin .h-box-admin .h-admin-option {
+  display: flex;
+  align-items: center;
 }
 
 /* action hover foe each option admin */

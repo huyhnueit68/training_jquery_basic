@@ -36,6 +36,7 @@
         </div>
         <!-- nav bar menu option -->
         <div class="nav-menu" >
+            <!-- submenu options section -->
             <div class="nav-item">
                 <div class="nav-item-icon item-icon-1"></div>
                 <div class="nav-item-text">Tổng quan</div>
@@ -46,12 +47,15 @@
                 <div class="nav-item-text icon-option"></div>
             </div>
             <div class="nav-sub-item" id="sub-TS">
+                <!-- submenu of submenu -->
                 <div class="nav-item">
+                    <!-- main menu of submenu -->
                     <div class="nav-item-icon item-icon-3"></div>
                     <div class="nav-item-text">Tài sản HT-ĐB</div>
                     <div class="nav-item-text icon-option"></div>
                 </div>
                 <div class="sub-menu">
+                    <!-- sub-options of submenu -->
                     <div class="sub-option">Ghi tăng</div>
                     <div class="sub-option">Thay đổi thông tin</div>
                     <div class="sub-option">Đánh giá lại</div>
@@ -60,6 +64,7 @@
                     <div class="sub-option">Ghi giảm</div>
                 </div>
             </div>
+            <!-- submenu of submenu is displayed in minimalist mode -->
             <div class="header-menu">
                 <div class="sub-title">Tài sản hạ tầng đường bộ</div>
                 <div class="sub-box">
@@ -87,6 +92,7 @@
                     <div class="sub-option">Ghi giảm</div>
                 </div>
             </div>
+            <!-- remaining submenus -->
             <div class="nav-item">
                 <div class="nav-item-icon item-icon-4"></div>
                 <div class="nav-item-text">Công cụ dụng cụ</div>
@@ -169,11 +175,13 @@
             <div class="content-box">
                 <div class="info-toolbar">
                     <div class="toolbar-search">
+                        <!-- custom toolbar search inside -->
                         <div class="search-box">
                             <span class="form-control-search"></span>
                             <input type="text" class="search-property" placeholder="Tìm kiếm tài sản">
                         </div>
                     </div>
+                    <!-- table manipulation functions -->
                     <div class="toolbar-more ">
                         <div class="m-icon-common more-excel"></div>
                         <div class="more-printer">
@@ -190,12 +198,12 @@
                         <div class="hide-item">
                             <div class="col" FieldName="idPriority">Mã tài sản</div>
                             <div class="col" FieldName="name">Tên tài sản</div>
-                            <div class="col" FieldName="category" DataType="Date">Loại tài sản</div>
-                            <div class="col" FieldName="departmentUse">Bộ phận sử dụng</div>
-                            <div class="col" FieldName="qty"">Số lượng</div>
-                            <div class="col" FieldName="price" DataType="price">Nguyên giá</div>
-                            <div class="col" FieldName="cummulative">HM/KM lũy kế</div>
-                            <div class="col" FieldName="residualPrice">Gía trị còn lại</div>
+                            <div class="col" FieldName="category" DataType="TypeProperty">Loại tài sản</div>
+                            <div class="col" FieldName="departmentUse" DataType="DepartmentUse">Bộ phận sử dụng</div>
+                            <div class="col" FieldName="qty" DataType="Number">Số lượng</div>
+                            <div class="col" FieldName="price" DataType="Price">Nguyên giá</div>
+                            <div class="col" FieldName="cummulative" DataType="Number">HM/KM lũy kế</div>
+                            <div class="col" FieldName="residualPrice" DataType="Price">Gía trị còn lại</div>
                         </div>
                     </div>
                     <!-- content grid show paging option-->

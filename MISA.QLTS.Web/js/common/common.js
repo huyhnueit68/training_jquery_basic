@@ -13,21 +13,74 @@ function formatMoney(money) {
 }
 
 /**
+ * function fomat type property name
+ * PQ Huy 31.5.2021
+ * @param {*} data 
+ * @returns 
+ */
+function formatTypeProperty(data) {
+    switch (data) {
+        case 1:
+            data = "Máy tính";
+            break;
+        case 2:
+            data = "Máy in";
+            break;
+        case 3:
+            data = "Bàn ghế";
+            break;
+        case 4:
+            data = "Xe công";
+            break;
+        default:
+            data = "Bàm phím, chuột";
+            break;
+    }
+    return data;
+}
+
+/**
+ * function fomat department name
+ * PQ HUY 31.5.2021
+ * @param {*} data 
+ * @returns 
+ */
+function formatDepartmentUse(data) {
+    switch (data) {
+        case 1:
+            data = "Kế toán";
+            break;
+        case 2:
+            data = "Nhân sự";
+            break;
+        case 3:
+            data = "Điều hành";
+            break;
+        case 4:
+            data = "Nghiên cứu";
+            break;
+        default:
+            data = "Gia công PM";
+            break;
+    }
+    return data;
+}
+
+/**
  * PQ HUY 31.5.2021
  * show menu and hidden
  */
 $("#main-menu, .sub-menu-icon").on("click", function () {
-    
     if ($(".m-navbar").width() != 74) {
         $(".main-title, .nav-item-text, #main-menu, .sub-menu-text").slideToggle("slow");
         $(".m-navbar").width(74);
         $(".sub-menu").hide();
-        $(".content").css('left', 76).css('width', '100%').css('width', '-=86px');
-
+        $(".content").css('left', 76).css('width', '100%').css('width', '-=76px');
     } else {
         $(".main-title, .nav-item-text, #main-menu, .sub-menu-text").slideToggle("slow");
         $(".m-navbar").width(220);
         $(".content").css('left', 221).css('width', '100%').css('width', '-=221px');
+        $(".header-menu").hide();
     }
 })
 
@@ -97,10 +150,24 @@ $(window).resize(function(){
         $(".main-title, .nav-item-text, #main-menu, .sub-menu-text").fadeOut();
         $(".m-navbar").width(74);
         $(".sub-menu").hide();
-        $(".content").css('left', 76).css('width', '100%').css('width', '-=86px');
+        $(".content").css('left', 76).css('width', '100%').css('width', '-=76px');
     } else {
         $(".main-title, .nav-item-text, #main-menu, .sub-menu-text").fadeIn();
         $(".m-navbar").width(220);
         $(".content").css('left', 221).css('width', '100%').css('width', '-=221px');
+        $(".header-menu").hide();
     }  
+});
+
+/**
+ * filter in table
+ * PQ HUY 31.5.2021
+ */
+$(document).ready(function(){
+  $(".search-property").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#propertyTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
 });

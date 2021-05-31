@@ -1,11 +1,16 @@
+/*
+  pagination for table
+*/
 .grid-bar {
   height: 56px;
 }
 
+/* hidden content format data */
 .grid-property .hide-item {
   display: none;
 }
 
+/* color for header table */
 .custom-color {
   background-color: rgba(236, 236, 236, 0.651);
 }

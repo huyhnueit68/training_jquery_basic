@@ -1,3 +1,6 @@
+/*
+
+*/
 .m-navbar {
   float: left;
   width: 220px;
@@ -21,6 +24,7 @@
   padding: 0 16px 0 16px;
   border-top: 1px solid #b9b9b9;
 }
+/* icon menu showw/hiden smail menu*/
 .m-navbar .sub-main-menu .sub-menu-icon {
   background-image: url("/content/icon/toggleMenu.JPG");
   background-size: contain;
@@ -30,14 +34,19 @@
   width: 32px;
   height: 32px;
 }
+
+/* text menu showw/hiden smail menu*/
 .m-navbar .sub-main-menu .sub-menu-text {
   color: #ffffff;
   padding-left: 16px;
   font-size: 16px;
 }
+
+/* action icon sub menu*/
 .m-navbar .sub-main-menu .sub-menu-icon:hover {
   cursor: pointer;
 }
+
 /* css main menu box */
 .m-navbar .nav-main .nav-main-style {
   display: flex;
@@ -137,7 +146,9 @@
   padding: 16px 5px 16px 55px;
 }
 
-/* set icon for each option*/
+/* 
+  set icon for each option
+*/
 .item-icon-1 {
   background-image: url("/content/icon/screenPC.JPG");
 }
@@ -187,16 +198,19 @@
   display: none;
 }
 
+/* sub menu of menu smail  */
 .nav-menu .header-menu .sub-box {
   display: flex;
   align-items: center;
 }
 
+/* action sub menu of menu smail  */
 .nav-menu .header-menu .sub-box:hover {
   background-color: #cdd7f5;
   cursor: pointer;
 }
 
+/* set icon arrow next to sub menu */
 .nav-menu .header-menu .icon-sub {
   width: 16px;
   height: 16px;
@@ -208,6 +222,7 @@
   transform: rotate(-90deg);
 }
 
+/* set display sub menu */
 .nav-menu .header-menu .sub-title {
   padding: 16px 5px 16px 16px;
 }

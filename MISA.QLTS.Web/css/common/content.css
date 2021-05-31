@@ -25,10 +25,11 @@
   display: flex;
 }
 
+/* set size text for title table */
 .content .conten-header .c-header-box .header-name {
   font-size: 24px;
 }
-
+/* set image for  function refesh*/
 .content .conten-header .c-header-box .header-refesh {
   padding-left: 45px;
   background-image: url(/content/icon/refresh.png);
@@ -163,6 +164,8 @@
   background-repeat: no-repeat;
   background-size: contain;
 }
+
+/* display toolbar search element in table */
 .toolbar-search .search-box .form-control-search,
 .toolbar-search .search-box .search-property {
   display: block;
@@ -204,12 +207,15 @@
   background-size: contain;
 }
 
+/* set icon for each option function table */
 .info-toolbar .toolbar-more .more-excel {
   background-image: url("/content/img/excel.png");
 }
 .info-toolbar .toolbar-more .more-printer .main-icon-printer {
   background-image: url("/content/img/printer.png");
 }
+
+/*set icon arrow next to excel icon */
 .info-toolbar .toolbar-more .more-printer .printer-arrow {
   width: 12px;
   height: 12px;
@@ -218,6 +224,8 @@
   background-size: contain;
   background-image: url("/content/icon/down-arrow.png");
 }
+
+/* icon menu load more vertical */
 .info-toolbar .toolbar-more .more-load-action {
   width: 20px;
   height: 20px;
@@ -225,7 +233,7 @@
   background-size: contain;
   background-image: url("/content/img/more.png");
 }
-
+/* css for button option nex printer */
 .info-toolbar .toolbar-more .more-printer {
   align-items: center;
   padding: 0 32px 0 32px;
@@ -236,6 +244,7 @@
   display: flex;
 }
 
+/* render content inside */
 .info-content {
   width: 100%;
 }

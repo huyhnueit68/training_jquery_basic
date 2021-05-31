@@ -75,17 +75,19 @@ class Property {
      * @param {dataJson} dataJson 
      * @returns tbody html
      */
-    renderTbody(data) {
+    renderTbody(dataForm) {
         var count = 0;
         let me = this,
-            tbody = $("<tbody></tbody>");
-
-        if(data && data.length > 0){
-            data.filter(function(item){
+            tbodyRender = $("<tbody id='propertyTable'></tbody>");
+        
+        /* check data nan */
+        if(dataForm && dataForm.length > 0){
+            dataForm.filter(function(item){
                 let row = $("<tr></tr>");
                 let checkbox = `<th><input type="checkbox" id="" name="" class="checkedValue" value="${item[0]}"><th>${++count}</th>`;
                 row.append(checkbox);
-                // Duyệt config từng cột
+                
+                /* for loop each row and set to each field name */
                 me.grid.find(".col").each(function(){
                     let fieldName = $(this).attr("FieldName"),
                         dataType = $(this).attr("DataType"),
@@ -94,17 +96,17 @@ class Property {
                         className = me.getClassFormat(dataType),
                         value = me.getValue(data, dataType);
 
-                    //append input checkbox
+                    /** set value for row */
                     cell.text(value);
                     cell.addClass(className);
                     row.append(cell);
                 });
 
-                tbody.append(row);
+                tbodyRender.append(row);
             });
         }
 
-        return tbody;
+        return tbodyRender;
     }
 
     /**
@@ -118,6 +120,7 @@ class Property {
         
         switch (dataType) {
             case "Number":
+            case "Price":
                 className = "align-right";
                 break;
             case "Data":
@@ -137,12 +140,14 @@ class Property {
         let me = this;
         
         switch (dataType) {
-            case "Number":
+            case "Price":
                 data = formatMoney(data);
                 break;
-            case "Data":
+            case "TypeProperty":
+                data = formatTypeProperty(data);
                 break;
-            case "Enum":
+            case "DepartmentUse":
+                data = formatDepartmentUse(data);
                 break;
         }
         
