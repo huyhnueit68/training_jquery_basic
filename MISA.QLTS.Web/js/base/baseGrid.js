@@ -10,6 +10,10 @@ class BaseGrid {
         //save parent grid
         me.grid = $(gridId);
 
+        //bindding data form
+        me.formDetail = null;
+
+        //call data server
         me.getDataServer();
 
         //init event page
@@ -48,7 +52,6 @@ class BaseGrid {
             toolBarId = me.grid.attr("ToolBar"),
             toolBar = $(`#${toolBarId}`);
         
-        
         if (toolBar.length > 0) {
             toolBar.find('.btn-name').on('click', function () {
                 let commandType = $(this).attr("CommandType"),
@@ -62,7 +65,7 @@ class BaseGrid {
                         fireEvent = me.editFunction;
                         break;
                     case resource.CommandType.Delete: //delete item 
-                        fireEvent = me.delete;
+                        fireEvent = me.deleteFunction;
                         break;
                     case resource.CommandType.Refresh: //refresh item 
                         fireEvent = me.refresh;
@@ -149,6 +152,19 @@ class BaseGrid {
         // refresh old content before append new html
         me.grid.find("table").remove();
         me.grid.append(tableRender);
+
+        //set id after binding data
+        me.afterBinding();
+    }
+
+    afterBinding(){
+        let me = this;
+
+        // set id for each record
+        me.ItemId = me.grid.attr("ItemId");
+
+        // choose the first row
+        me.grid.find("tbody tr").eq(0).addClass("selected-row");
     }
 
     /**
@@ -256,8 +272,8 @@ class BaseGrid {
      * @param {function} column
      */
     getValue(data, dataType, column) {
-        
-        let fomat = new PropertyFomatData(data);
+        let me = this;
+
         switch (dataType) {
             case resource.DataTypeColumn.Number:
                 data = commonFn.formatMoney(data);
@@ -274,6 +290,23 @@ class BaseGrid {
         return data;
     }
 
+    /**
+     * delete data
+     * PQ Huy 03.06.2021
+     */
+    deleteFunction() {
+        let me = this,
+            itemId = me.ItemId,
+            data = me.getSelectedRecord();
+        data = data[itemId];
+        me.delete(data);
+        me.refresh();
+    }
+
+    /**
+     * add data
+     * PQ Huy 03.06.2021
+     */
     addFunction() {
         let me = this,
             param = {
@@ -282,28 +315,56 @@ class BaseGrid {
                 Record: {}
             };
         
-        if (me.formatDetail) {
+        if (me.formDetail) {
             me.formDetail.open(param);
         }
     }
 
+    /**
+     * edit data 
+     * PQ Huy 03.06.2021
+     */
     editFunction() {
+    
         let me = this,
             param = {
                 Parent: me,
                 FormMode: enumeration.FormModel.Edit,
-                Record: {...me.getSelectedRecord()}
+                Record: { ...me.getSelectedRecord() },
+                ItemId: me.ItemId
             };
         
-        if (me.formatDetail) {
+        if (me.formDetail) {
             me.formDetail.open(param);
         }
     }
 
+    /**
+     * refresh data
+     * PQ Huy 03.06.2021
+     */
     refresh() {
         let me = this;
 
         me.getDataServer();
+    }
+
+    /**
+     * delete data
+     * PQ Huy 03.06.2021
+     */
+    delete(dataId) {
+        let me = this,
+            url = `${me.grid.attr("Url")}/${dataId}`,
+            urlFull = `${constant.UrlPrefix}${url}`;
+        //call ajax function get data
+        commonFn.Ajax(urlFull, resource.Method.Delete, {}, function (response) {
+            if (response) {
+                me.loadDataGrid(response);
+            } else {
+                console.log("Something went wrong!!!");
+            }
+        })
     }
 }
 

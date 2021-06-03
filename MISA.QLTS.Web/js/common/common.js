@@ -30,6 +30,33 @@ commonFn.formatDate = dateSrc => {
 }
 
 /**
+ * validate date fomatData
+ * PQ Huy 03.06.2021
+ * @param {*} date 
+ * @returns 
+ */
+commonFn.isDateFormat = (date) => {
+    let regex = new RegExp("([0-9]{4}[-](0[1-9]|1[0-2])[-]([0-2]{1}[0-9]{1}|3[0-1]{1})|([0-2]{1}[0-9]{1}|3[0-1]{1})[-](0[1-9]|1[0-2])[-][0-9]{4})");
+    
+    return regex.test(date);
+}
+
+/**
+ * convert data to date format
+ * PQ Huy 03.06.2021
+ * @param {*} dateSrc 
+ * @returns 
+ */
+commonFn.convertDate = dateSrc => {
+    let date = new Date(dateSrc),
+        year = date.getFullYear().toString(),
+        month = (date.getMonth() + 1).toString().padStart(2, '0'),
+        day = date.getDate().toString().padStart(2, '0');
+
+    return `${year}-${month}-${day}`;
+}
+
+/**
  * function get value of a enum
  * @param {*} data 
  * @param {*} enumName 
@@ -64,7 +91,7 @@ commonFn.Ajax = (url, method, data, fnCallback, async = true) => {
         method: method,
         async:async,
         data: JSON.stringify(data),
-        header: {
+        headers: {
             "Content-Type": "application/json",
         },
         crossDomain: true, //connect frontend and backend and pass to server,
@@ -74,7 +101,7 @@ commonFn.Ajax = (url, method, data, fnCallback, async = true) => {
             fnCallback(response);
         },
         error: function (errormessage) {
-            console.log(errormessage.responseText);
+            console.log("Lỗi nè" + errormessage.responseText);
         }
     })
 }

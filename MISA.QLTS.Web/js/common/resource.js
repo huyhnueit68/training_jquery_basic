@@ -36,3 +36,9 @@ resource.CommandType = {
     Import: "Import",
     Export: "Export"
 }
+
+// Command form
+resource.CommandForm = {
+    Save: "Save",
+    Cancel: "Cancel",
+}

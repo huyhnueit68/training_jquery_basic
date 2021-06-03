@@ -35,3 +35,13 @@
 .idEmployee {
   width: 100%;
 }
+
+.modal-footer .cancel-form {
+  background-color: rgb(236, 33, 33);
+  color: #ffffff;
+}
+
+.modal-footer .submit-form {
+  background-color: rgb(67, 138, 196);
+  color: #ffffff;
+}

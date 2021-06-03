@@ -11,9 +11,22 @@ class Property extends BaseGrid{
         
         //save parent grid property
         me.grid = $(gridId);
+
+        this.config();
     }
 
-    
+    // Cấu hình các url 
+     config(){
+        let me = this,
+            config = {
+                urlAdd: "v1/Employees",
+                urlEdit: "v1/Employees",
+                urlDelete: "v1/Employees"
+            };
+ 
+        Object.assign(me, config);
+     }
+
     /**
      * function init form
      * PQ Huy 02.06.2021
@@ -23,9 +36,11 @@ class Property extends BaseGrid{
         let me = this;
 
         me.formDetail = new propertyDetail(formId);
-        
     }
 
+    /**
+     * 
+     */
     add() {
         
     }

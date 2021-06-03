@@ -16,3 +16,7 @@ body {
 .align-right {
   text-align: right;
 }
+
+.notValidControl {
+  border: 2px solid red;
+}

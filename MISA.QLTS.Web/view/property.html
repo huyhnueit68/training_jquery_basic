@@ -166,11 +166,11 @@
                     <div class="btn-name name-del" CommandType="Delete">Xóa</div>
                 </button>
                 <button  class="btn-add btn-edit" data-toggle="tooltip" data-placement="top" title="Edit Property">
-                    <div class="btn-name name-edit" CommandType="Edit" data-toggle="modal" data-target="#modalAction">Sửa</div>
+                    <div class="btn-name name-edit" CommandType="Edit">Sửa</div>
                 </button>
                 <button class="btn-add" >
                     <div CommandType="Add" class="btn-name" data-toggle="tooltip" data-placement="top" title="Add Property" >
-                        <span data-toggle="modal" data-target="#modalAction">Thêm</span>
+                        <span>Thêm</span>
                     </div>
                     <div class="btn-arrow" data-toggle="tooltip" data-placement="top" title="More Option"></div>
                 </button>
@@ -204,12 +204,12 @@
                 <!-- content main-->
                 <div class="info-content">
                     <!-- content grid show info-->
-                    <div class="grid grid-property my-custom-scrollbar" id="gridProperty" Url="v1/Employees" ToolBar="toolBarEmployee">
+                    <div class="grid grid-property my-custom-scrollbar" id="gridProperty" Url="v1/Employees" ToolBar="toolBarEmployee" ItemId="EmployeeId">
                         <div class="hide-item">
                             <div class="col" FieldName="FullName">Họ tên</div>
                             <div class="col" FieldName="EmployeeCode">Mã nhân viên</div>
                             <div class="col" FieldName="DateOfBirth" DataType="Date">Ngày sinh</div>
-                            <div class="col" FieldName="Grender" DataType="Enum" EnumName="Grender">Giới tính</div>
+                            <div class="col" FieldName="Gender" DataType="Enum" EnumName="Grender">Giới tính</div>
                             <div class="col" FieldName="Address">Địa chỉ</div>
                             <div class="col" FieldName="PhoneNumber">Số điện thoại</div>
                             <div class="col" FieldName="Email">Email</div>
@@ -284,8 +284,8 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" >Submit</button>
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-default submit-form action-form" Command="Save">Submit</button>
+                                    <button type="button" class="btn btn-default cancel-form action-form" Command="Cancel">Cancel</button>
                                 </div>
                             </div>
                         </div>
