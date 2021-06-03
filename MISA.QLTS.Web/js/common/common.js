@@ -1,11 +1,13 @@
+var commonFn = commonFn || {};
+
 /**
- * function fomat data money
- * PQ Huy 30.5.2021
- * @param {data} money 
+ * function fomat money
+ * PQ Huy 02.06.2021
+ * @param {*} money 
  * @returns 
  */
-function formatMoney(money) {
-    if(!isNaN(money)){
+commonFn.formatMoney = money => {
+    if(money &&!isNaN(money)){
         return money.toString().replace(/(\d)(?=(\d{3})+(?:\.\d+)?$)/g, "$1.");
     }else{
         return money;
@@ -13,58 +15,70 @@ function formatMoney(money) {
 }
 
 /**
- * function fomat type property name
- * PQ Huy 31.5.2021
- * @param {*} data 
+ * function fomat date
+ * PQ Huy 02.06.2021
+ * @param {*} dateSrc 
  * @returns 
  */
-function formatTypeProperty(data) {
-    switch (data) {
-        case 1:
-            data = "Máy tính";
-            break;
-        case 2:
-            data = "Máy in";
-            break;
-        case 3:
-            data = "Bàn ghế";
-            break;
-        case 4:
-            data = "Xe công";
-            break;
-        default:
-            data = "Bàm phím, chuột";
-            break;
+commonFn.formatDate = dateSrc => {
+    let date = new Date(dateSrc),
+        year = date.getFullYear().toString(),
+        month = (date.getDate() + 1).toString().padStart(2, '0'),
+        day = (date.getDate() + 1).toString().padStart(2, '0');
+    
+    return `${day}/${month}/${year}`;
+}
+
+/**
+ * function get value of a enum
+ * @param {*} data 
+ * @param {*} enumName 
+ * @returns 
+ */
+commonFn.getValueEnum = (data, enumName) => {
+    let enumGetData = enumeration[enumName], //get the corresonding enum in the enum File, return array
+        resourceData = resource[enumName];
+    
+    for (value in enumGetData) {
+        if (enumGetData[value] == data) {
+            data = resourceData[value];
+        }
     }
+
     return data;
 }
 
 /**
- * function fomat department name
- * PQ HUY 31.5.2021
+ * function get ajax  by url and return json data
+ * PQ Huy 02.06.2021
+ * 
+ * @param {*} url 
+ * @param {*} method 
  * @param {*} data 
- * @returns 
+ * @param {*} fnCallback 
+ * @param {*} async 
  */
-function formatDepartmentUse(data) {
-    switch (data) {
-        case 1:
-            data = "Kế toán";
-            break;
-        case 2:
-            data = "Nhân sự";
-            break;
-        case 3:
-            data = "Điều hành";
-            break;
-        case 4:
-            data = "Nghiên cứu";
-            break;
-        default:
-            data = "Gia công PM";
-            break;
-    }
-    return data;
+commonFn.Ajax = (url, method, data, fnCallback, async = true) => {
+    $.ajax({
+        url: url,
+        method: method,
+        async:async,
+        data: JSON.stringify(data),
+        header: {
+            "Content-Type": "application/json",
+        },
+        crossDomain: true, //connect frontend and backend and pass to server,
+        connectType: "application/json;charset=utf-8",
+        dataType: "json",
+        success: function (response) {
+            fnCallback(response);
+        },
+        error: function (errormessage) {
+            console.log(errormessage.responseText);
+        }
+    })
 }
+
 
 /**
  * PQ HUY 31.5.2021
@@ -171,3 +185,24 @@ $(document).ready(function(){
     });
   });
 });
+
+/** show more option function */
+$(".btn-arrow").on("click", function () {
+    var checked = $(".btn-add").find(".rotate-left").length;
+    console.log(checked);
+
+    if (checked == 0) {
+        $(".btn-arrow").addClass("rotate-left");
+    } else {
+        $(".btn-arrow").removeClass("rotate-left");
+    }
+    
+    $(".btn-del, .btn-edit, .btn-ref").fadeToggle("slow");
+})
+
+
+/** set tooltip for icon*/
+$(".header-refesh, .h-admin-bell, .h-admin-menu").tooltip();
+$(".h-admin-question, .h-admin-option, .btn-name").tooltip();
+$(".btn-more, .more-excel, .more-printer").tooltip();
+$(".btn-arrow, .more-load-action, .btn-edit, .btn-del, .btn-ref").tooltip();

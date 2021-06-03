@@ -3,3 +3,35 @@
   width: 100%;
   height: calc(100vh - 260px);
 }
+
+/* color for header table */
+.custom-color {
+  background-color: rgba(236, 236, 236, 0.651);
+}
+
+.selected-row {
+  background-color: #d3d3da;
+}
+
+.box-input {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sub-box {
+  width: 100%;
+  padding: 10px 20px 10px 20px;
+}
+
+.sub-box input,
+.sub-box select {
+  width: 100%;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  height: 32px;
+}
+
+.idEmployee {
+  width: 100%;
+}

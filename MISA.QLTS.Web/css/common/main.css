@@ -8,3 +8,11 @@ body {
   font-family: "GoogleSans-Regular";
   src: url(/content/font/GoogleSans-Regular.otf);
 }
+
+.align-center {
+  text-align: center;
+}
+
+.align-right {
+  text-align: right;
+}

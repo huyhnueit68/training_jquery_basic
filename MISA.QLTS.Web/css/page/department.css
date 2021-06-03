@@ -1,0 +1,15 @@
+/* custom grid  */
+.info-content .grid-property {
+  width: 100%;
+  height: calc(100vh - 260px);
+}
+
+/* color for header table */
+.custom-color {
+  background-color: rgba(236, 236, 236, 0.651);
+}
+
+/* add class when selected */
+.selected-row {
+  background-color: #b9b9e9;
+}
