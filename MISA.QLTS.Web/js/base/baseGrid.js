@@ -13,6 +13,9 @@ class BaseGrid {
         //bindding data form
         me.formDetail = null;
 
+        //save data grid 
+        me.dataGrid = null;
+
         //call data server
         me.getDataServer();
 
@@ -47,6 +50,10 @@ class BaseGrid {
         
     }
 
+    /**
+     * function event tool bar
+     * PQ Huy 02.06.2021
+     */
     initEventToolBar() {
         let me = this,
             toolBarId = me.grid.attr("ToolBar"),
@@ -64,7 +71,7 @@ class BaseGrid {
                     case resource.CommandType.Edit: //edit item 
                         fireEvent = me.editFunction;
                         break;
-                    case resource.CommandType.Delete: //delete item 
+                    case resource.CommandType.Delete: //delete item
                         fireEvent = me.deleteFunction;
                         break;
                     case resource.CommandType.Refresh: //refresh item 
@@ -116,11 +123,16 @@ class BaseGrid {
         //call ajax function get data
         commonFn.Ajax(urlFull, resource.Method.Get, {}, function (response) {
             if (response) {
+                me.dataGrid = response;
                 me.loadDataGrid(response);
             } else {
                 console.log("Something went wrong!!!");
             }
         })
+        $('.icon-loader').fadeIn("fast", function(){        
+            $(".icon-loader").fadeOut(1000);
+        });
+
     }
 
     /**
@@ -296,11 +308,21 @@ class BaseGrid {
      */
     deleteFunction() {
         let me = this,
-            itemId = me.ItemId,
-            data = me.getSelectedRecord();
-        data = data[itemId];
-        me.delete(data);
-        me.refresh();
+            param = {
+                Parent: me,
+                FormMode: enumeration.FormModel.Delete,
+                DataGrid: me.dataGrid,
+                Record: { ...me.getSelectedRecord() },
+                ItemId: me.ItemId
+            };
+        
+        if (me.formDetail) {
+            me.formDetail.form.find("[ShowForm]").each(function () {
+                $(this).addClass("disabled-text");
+            })
+            $(".form-delete").show();
+            me.formDetail.open(param);
+        }
     }
 
     /**
@@ -312,10 +334,15 @@ class BaseGrid {
             param = {
                 Parent: me,
                 FormMode: enumeration.FormModel.Add,
+                DataGrid: me.dataGrid,
                 Record: {}
             };
         
         if (me.formDetail) {
+            me.formDetail.form.find("[ShowForm]").each(function () {
+                $(this).removeClass("disabled-text");
+            })
+            $(".form-delete").hide();
             me.formDetail.open(param);
         }
     }
@@ -330,11 +357,16 @@ class BaseGrid {
             param = {
                 Parent: me,
                 FormMode: enumeration.FormModel.Edit,
+                DataGrid: me.dataGrid,
                 Record: { ...me.getSelectedRecord() },
                 ItemId: me.ItemId
             };
         
         if (me.formDetail) {
+            me.formDetail.form.find("[ShowForm]").each(function () {
+                $(this).removeClass("disabled-text");
+            })
+            $(".form-delete").hide();
             me.formDetail.open(param);
         }
     }
@@ -347,24 +379,6 @@ class BaseGrid {
         let me = this;
 
         me.getDataServer();
-    }
-
-    /**
-     * delete data
-     * PQ Huy 03.06.2021
-     */
-    delete(dataId) {
-        let me = this,
-            url = `${me.grid.attr("Url")}/${dataId}`,
-            urlFull = `${constant.UrlPrefix}${url}`;
-        //call ajax function get data
-        commonFn.Ajax(urlFull, resource.Method.Delete, {}, function (response) {
-            if (response) {
-                me.loadDataGrid(response);
-            } else {
-                console.log("Something went wrong!!!");
-            }
-        })
     }
 }
 

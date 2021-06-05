@@ -217,29 +217,33 @@
                             <div class="col" FieldName="DepartmentId">Phòng ban</div>
                         </div>
                     </div>
-                    <!-- Modal -->
+                    <!-- Modal -->                    
+                    <div class="spinner-border text-primary"></div>
                     <div class="modal fade" id="modalAction" role="dialog">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                                 </div>
-                                <div class="modal-body">
+                                <div class="modal-body form-delete">
+                                    Bạn có chắc muốn xóa bản ghi này?
+                                </div>
+                                <div class="modal-body" ShowForm="true">
                                     <div class="box-input">
                                         <div class="sub-box">
                                             <label for="">Họ tên <span style="color: red;">(*)</span></label><br>
-                                            <input type="text" FieldName="FullName" Require="true">
+                                            <input type="text" class="fullname-input" FieldName="FullName" Require="true" maxlength="200">
                                         </div>
                                         <div class="sub-box">
                                             <label for="">Mã nhân viên <span style="color: red;">(*)</span></label><br>
-                                            <input type="text" FieldName="EmployeeCode" Require="true">
+                                            <input type="text" FieldName="EmployeeCode" Require="true" maxlength="200">
                                         </div>
                                     </div>
                                     <div class="box-input">
                                         <div class="sub-box">
                                             <label for="">Giới tính</label>
                                             <br>
-                                            <select FieldName="Gender" DataType="Enum" EnumName="Gender">
+                                            <select FieldName="Gender" DataType="Enum" EnumName="Gender" Require="true">
                                                 <option value="0">Nữ</option>
                                                 <option value="1">Nam</option>
                                                 <option value="2">Khác</option>
@@ -248,38 +252,38 @@
                                         <div class="sub-box">
                                             <label for="">Ngày sinh</label>
                                             <br>
-                                            <input type="date" FieldName="DateOfBirth" DataType="Date">
+                                            <input type="date" FieldName="DateOfBirth" DataType="Date" Require="true">
                                         </div>
                                     </div>
                                     <div class="box-input">
                                         <div class="sub-box">
                                             <label for="">Số điện thoại</label>
                                             <br>
-                                            <input type="text" FieldName="PhoneNumber">
+                                            <input type="text phone-input" FieldName="PhoneNumber" DataType="PhoneNumber" maxlength="100">
                                         </div>
                                         <div class="sub-box">
                                             <label for="">Email</label>
                                             <br>
-                                            <input type="text" FieldName="Email">
+                                            <input type="text email-input" FieldName="Email" DataType="Email" maxlength="200">
                                         </div>
                                     </div>
                                     <div class="box-input">
                                         <div class="sub-box">
                                             <label for="">Mức lương <span style="color: red;">(*)</span></label>
                                             <br>
-                                            <input type="number" FieldName="Salary" DataType="Number" Require="true">
+                                            <input type="text" class="salary-input" FieldName="Salary" DataType="Number" Require="true" maxlength="200">
                                         </div>
                                         <div class="sub-box">
                                             <label for="">Phòng ban</label>
                                             <br>
-                                            <input type="text" FieldName="DepartmentName">
+                                            <input type="text" FieldName="DepartmentName" maxlength="200">
                                         </div>
                                     </div>
                                     <div class="box-input">
                                         <div class="sub-box">
                                             <label for="">Địa chỉ</label>
                                             <br>
-                                            <input type="text" FieldName="Address">
+                                            <input type="text" FieldName="Address" >
                                         </div>
                                     </div>
                                 </div>
@@ -326,10 +330,14 @@
             </div>
         </div> 
     </div>
+    <div class="icon-loader">
+        <div class="loader"></div>
+    </div>
 
     <!-- add jquery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
     <!-- add js comomnt -->
     <script src="../js/common/common.js"></script>
     <script src="../helper/dataForm.js"></script>

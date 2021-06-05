@@ -227,6 +227,40 @@ $(".btn-arrow").on("click", function () {
     $(".btn-del, .btn-edit, .btn-ref").fadeToggle("slow");
 })
 
+/**
+ * convert first key of string to upper case
+ * PQ Huy 04.06.2021
+ */
+$(document).ready(function(){
+    $(".fullname-input").keypress(function () {
+        $(this).val(capitalizeFirstLetter($(this).val()));
+    });
+
+    $(".salary-input").keyup(function () {
+        $(this).val(numberWithCommas($(this).val()));
+    });
+});
+
+/**
+ * convert first key of string to upper case
+ * PQ Huy 04.06.2021
+ * @param {*} string 
+ * @returns 
+ */
+function capitalizeFirstLetter(string) {
+    return string.replace(/(?:^|\s)\S/g, function(a) { return a.toUpperCase(); });
+}
+
+/**
+ * automaticaly add comma when pe
+ */
+function numberWithCommas(string) {
+    string = string.toString().replace(/,/g, '').replace(/\D/g,'').split(' ').join('');
+    return string.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+$(".modal-body").find('input:first').focus();
+
 
 /** set tooltip for icon*/
 $(".header-refesh, .h-admin-bell, .h-admin-menu").tooltip();

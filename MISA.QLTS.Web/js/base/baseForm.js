@@ -15,10 +15,22 @@ class baseForm{
         let me = this;
 
         me.initEventButtonClick();
+
     }
 
     /**
-     * 
+     * function set first letter after space uppercase
+     * PQ Huy 04.06.2021
+     * @param {*} string 
+     * @returns 
+     */
+    capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
+    /**
+     * function create event click save and cancel
+     * PQ Huy 02.06.2021
      */
     initEventButtonClick() {
         let me = this;
@@ -42,10 +54,11 @@ class baseForm{
      * PQ Huy 03.06.2021
      */
     save() {
+
         let me = this,
             isValid = me.ValidateForm();
         
-        if (isValid) {
+        if (isValid || me.FormMode == enumeration.FormModel.Delete) {
             let data = me.getDataForm();
             
             me.saveData(data);
@@ -58,17 +71,23 @@ class baseForm{
      * PQ Huy 03.06.2021
      */
     saveData(data) {
+        
         let me = this,
             url = me.Parent.urlAdd,
             method = resource.Method.Post,
             urlFull = `${constant.UrlPrefix}${url}`;
         
         /** set edit method */
-        
-        
         if (me.FormMode == enumeration.FormModel.Edit) {
             url = `${me.Parent.urlEdit}/${data[me.ItemId]}`;
             method = resource.Method.Put,
+            urlFull = `${constant.UrlPrefix}${url}`;
+        }
+
+        /** set delete method */
+        if (me.FormMode == enumeration.FormModel.Delete) {
+            url = `${me.Parent.urlDelete}/${data[me.ItemId]}`;
+            method = resource.Method.Delete,
             urlFull = `${constant.UrlPrefix}${url}`;
         }
 
@@ -86,7 +105,6 @@ class baseForm{
                 console.log("Có lỗi khi cất dữ liệu");
             }
         })
-
     }
 
     /**
@@ -138,6 +156,14 @@ class baseForm{
             isvalid = me.validateRequire();
         
         if (isvalid) {
+            isvalid = me.validateFieldPhone();
+        }
+
+        if (isvalid) {
+            isvalid = me.validateEmail();
+        }
+
+        if (isvalid) {
             isvalid = me.validateFieldNumber();
         }
 
@@ -146,10 +172,181 @@ class baseForm{
         }
 
         if (isvalid) {
+            isvalid = me.validateCode();
+        }
+
+        if (isvalid) {
             isvalid = me.validateCustom();
         }
 
         return isvalid;
+    }
+
+    /**
+     * validate code each field
+     * PQ Huy 04.06.2021
+     */
+    validateCode() {
+        let me = this,
+            isValid = true,
+            formMode = me.FormMode;
+            
+        switch (formMode) {
+            case enumeration.FormModel.Add:
+                isValid = me.validateDuplicateAddCode();
+                break;
+            case enumeration.FormModel.Edit:
+                isValid = me.validateDuplicateEditCode();
+                break;
+            case enumeration.FormModel.Delete:
+                isValid = me.validateDeleteCode();
+                break;
+        }
+
+        return isValid;
+    }
+
+    /**
+     * function check exits id
+     * PQ Huy 04.06.2021
+     */
+    validateDeleteCode() {
+        let me = this,
+            isValid = false,
+            employeeId = me.Parent.getSelectedRecord().EmployeeId,
+            value = me.Parent.dataGrid;
+        
+        value.filter(function (arr) {
+            
+            if (arr["EmployeeId"] == employeeId) {
+                isValid = true;
+            }
+        })
+
+        if (!isValid) {
+            alert("This record is not exits");
+        }
+
+        return isValid;
+    }
+
+    /**
+     * function validate edit data
+     * PQ Huy 04.06.2021
+     * @returns 
+     */
+    validateDuplicateEditCode() {
+        let me = this,
+            isValid = true,
+            oldCode = me.Parent.getSelectedRecord().EmployeeCode,
+            value = me.Parent.dataGrid;
+        debugger
+        me.form.find("[FieldName='EmployeeCode']").each(function () {
+            let employeeCode = $(this);
+
+            if (employeeCode.length > 0) {
+                debugger
+                    if (employeeCode.val() != oldCode) {
+                        value.filter(function (arr) {
+                        if (arr["EmployeeCode"] == employeeCode.val()) {
+                            isValid = false;
+                            alert("Duplicate Code, please choose another code");
+                        }
+                    })
+                }
+            }
+        })
+
+        return isValid;
+    }
+
+    /**
+     * function validate add data
+     * PQ Huy 04.06.2021
+     * @returns 
+     */
+    validateDuplicateAddCode() {
+        let me = this,
+            isValid = true,
+            value = me.Parent.dataGrid;
+        
+        me.form.find("[FieldName='EmployeeCode']").each(function () {
+            let employeeCode = $(this);
+
+            if (employeeCode.length > 0) {
+                value.filter(function (arr) {
+                    if (arr["EmployeeCode"] == employeeCode.val()) {
+                        isValid = false;
+                        alert("Duplicate Code, please choose another code");
+                    }
+                })
+            }
+        })
+
+        return isValid;
+    }
+
+    /**
+     * function validate email field
+     * PQ Huy 04.06.2021
+     */
+    validateEmail() {
+        let me = this,
+            isValid = true;
+        
+        me.form.find("[DataType='Email']").each(function () {
+            var control = $(this);
+            let value = control.val();
+            
+            
+            if (!me.isEmail(value)) {
+                isValid = false; 
+                control.addClass("notValidControl");
+                control.attr("title", "Please enter a number phone!!!");
+            } else {
+                control.removeClass("notValidControl");
+            }
+        })
+
+        return isValid;
+    }
+
+    /**
+     * check is email
+     * PQ Huy 04.06.2021
+     * @param {*} email 
+     * @returns 
+     */
+    isEmail(email) {
+
+        const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        
+        return re.test(email);
+    }
+
+    /**
+     * function validate phone number
+     * PQ Huy 04.06.2021
+     * @returns 
+     */
+    validateFieldPhone() {
+        let me = this,
+            isValid = true;
+        
+        me.form.find("[DataType='PhoneNumber']").each(function () {
+            var control = $(this);
+            let value = control.val();
+            
+            if (isNaN(value)) {
+                isValid = false;
+                control.addClass("notValidControl");
+                control.attr("title", "Please enter a number phone!!!");
+            } else {
+                control.removeClass("notValidControl");
+            }
+        })
+
+        return isValid;
     }
 
     /**
@@ -186,10 +383,11 @@ class baseForm{
         me.form.find("[DataType='Number']").each(function () {
             var control = $(this);
             let value = control.val();
-            if (isNaN(value)) {
+            
+            if (!/^[0-9,.]*$/.test(value)) {
                 isValid = false;
                 control.addClass("notValidControl");
-                control.attr("title", "Please enter a number!!!");
+                control.attr("title", "Please enter a number salary!!!");
             } else {
                 control.removeClass("notValidControl");
             }
@@ -243,9 +441,10 @@ class baseForm{
         me.showForm();
 
 
-        if (me.FormMode == enumeration.FormModel.Edit) {
+        if (me.FormMode == enumeration.FormModel.Edit || me.FormMode == enumeration.FormModel.Delete) {
             me.bindingData(me.Record);
         }
+
     }
 
     /**
@@ -267,7 +466,8 @@ class baseForm{
     }
 
     /**
-     *  
+     *  function set value control
+     * PQ Huy 04.06.2021
      * @param {*} control 
      * @param {*} value 
      * @param {*} dataType 
@@ -286,7 +486,8 @@ class baseForm{
     }
 
     /**
-     * 
+     * show form 
+     * PQ Huy 04.06.2021
      */
     showForm() {
         let me = this;
@@ -294,10 +495,18 @@ class baseForm{
         me.form.modal('show');
         
         me.resetForm();
+
+        $('.modal-body > div').each(function(){
+            if ($(this).find('input').first()) {
+                $(this).focus();
+                return false;
+            }
+        });
     }
 
     /**
-     * 
+     * function reset form
+     * PQ Huy 02.06.2021
      */
     resetForm() {
         let me = this;
@@ -308,13 +517,13 @@ class baseForm{
     }
 
     /**
-     * 
+     * function cancel
+     * PQ Huy 03.06.2021
      */
     cancel() {
         let me = this;
 
         me.form.modal('hide');
     }
-
-    
 }
+
